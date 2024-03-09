@@ -41,5 +41,30 @@ Summarize the text delimited by triple backticks \
 into a single sentence.
 ```{text}```
 """
+
+prompt = f"""Create a high-level plan for completing a household task \
+      using the allowed actions and visible objects. You can find an example \
+      delimited by triple backticks. \
+    Allowed actions: OpenObject, CloseObject, PickupObject, PutObject, ToggleObjectOn,
+    ToggleObjectOff, SliceObject, Navigation \
+    
+    ```Example:
+        Task description: Put a heated egg in the sink.
+        Completed plan: Navigation fridge, OpenObject fridge, \
+        PickupObject egg, CloseObject fridge\
+        Visible objects are sink, egg, microwave\
+        High level Plan: Navigation microwave, OpenObject microwave, PutObject egg microwave,\
+        CloseObject microwave, ToggleObjectOn microwave, ToggleObjectOff microwave,\
+        OpenObject microwave, PickupObject egg, CloseObject microwave, Navigation\
+        sinkbasin, PutObject egg sinkbasin```\
+        
+    Task description: Cook a potato and put it into the recycle bin. \
+    Completed plan: Navigation fridge, OpenObject fridge, PickupObject potato, \
+    CloseObject fridge, Navigation microwave, OpenObject microwave, PutObject potato \
+    microwave, CloseObject microwave, ToggleObjectOn microwave, ToggleObjectOff \
+    microwave, OpenObject microwave, PickupObject potato, CloseObject microwave \
+    Visible objects are microwave, fridge, potato, garbagecan \
+    Next plan:
+    """
 response = get_completion(prompt)
 print(response)
