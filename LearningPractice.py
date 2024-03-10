@@ -66,5 +66,30 @@ prompt = f"""Create a high-level plan for completing a household task \
     Visible objects are microwave, fridge, potato, garbagecan \
     Next plan:
     """
-response = get_completion(prompt)
+
+prompt = f"""Create a high-level plan for completing a lab task \
+      using the allowed actions and usable objects. You can find an example \
+      delimited by triple backticks. Please format the result the same as the example.\
+    Allowed actions: OpenObject, CloseObject, PickupObject, PickupObjectWith, PutObject, ToggleObjectOn,
+    ToggleObjectOff, SliceObject, Navigation \
+    
+    ```Example:
+        Task description: Put the tweezers into the container, then grab the sample with the tweezers.\
+        Usable objects are tweezers, container, sample\
+        High level Plan: Navigation tweezers, PickupObject tweezers, Navigation container,
+        PickupObjectWith tweezers sample```\
+        
+    Task description: Take a potato and put it into the recycle bin. \
+    Usable objects are potato, recycle bin
+    Next plan:
+    """
+
+response = get_completion(prompt) 
+'''
+High level Plan: 
+   Navigation potato, PickupObject potato, Navigation recycle bin, PutObject potato
+
+High level Plan: 
+Navigation potato, PickupObject potato, Navigation recycle bin, PutObject potato into recycle bin
+'''
 print(response)
