@@ -83,8 +83,6 @@ prompt = f"""Create a high-level plan for completing a lab task \
     Usable objects are potato, recycle bin
     Next plan:
     """
-
-response = get_completion(prompt) 
 '''
 High level Plan: 
    Navigation potato, PickupObject potato, Navigation recycle bin, PutObject potato
@@ -92,4 +90,60 @@ High level Plan:
 High level Plan: 
 Navigation potato, PickupObject potato, Navigation recycle bin, PutObject potato into recycle bin
 '''
+
+prompt = f"""Create a high-level plan for completing a lab task \
+      using the allowed actions and usable objects. You can find examples \
+      delimited by triple backticks. Please format the result the same as the example.\
+    Allowed actions: Navigate, openObject, grabObject, putObject, disinfect, centrifuge, putObjectInto, \
+        pickupObjectWith, extractObject, transferObejct, changeObject, mixObject, waitForCondition \
+    
+    ```Example1:
+        Task description: Put the tweezers into the container, then grab the sample with the tweezers.\
+        High level Plan: Navigate tweezers, grabObject tweezers, Navigate container, openObject container, \
+        pickupObjectWith tweezers sample.\
+        
+        Example2: \
+        Task description: Pre-warm sample in the 37 degree water bath.\
+        High level Plan: Navigate water bath, putObjectInto sample water bath, waitForCondition sample 37 degree\
+        ```\
+        
+    Task description: Take a potato from refrigerator and thaw it into water bath for 26 degree. \
+    Next plan:
+    """
+'''
+Navigate refrigerator, openObject refrigerator, grabObject potato, navigate water bath, putObjectInto potato water bath, waitForCondition potato 26 degree
+'''
+
+prompt = f"""Create a high-level plan for completing a lab task \
+      using the allowed actions and usable objects. You can find examples \
+      delimited by triple backticks. Please format the result the same as the example.\
+    Allowed actions: Navigate, openObject, grabObject, putObject, disinfect, centrifuge, putObjectInto, \
+        pickupObjectWith, extractObject, transferObejct, changeObject, mixObject, waitForCondition \
+    
+    ```Example1:
+        Task description: Put the tweezers into the container, then grab the sample with the tweezers.\
+        High level Plan: Navigate tweezers, grabObject tweezers, Navigate container, openObject container, \
+        pickupObjectWith tweezers sample.\
+        
+        Example2: \
+        Task description: Pre-warm sample in the 37 degree water bath.\
+        High level Plan: Navigate water bath, putObjectInto sample water bath, waitForCondition sample 37 degree\
+        
+        Example3: \
+        Task description: Thaw extracellular matrix (ECM; Matrigel or Cultrex) compounds in a 4°C cooling rack in the refrigerator.\
+        High level Plan: grabObject extracellular matrix (ECM; Matrigel or Cultrex) compounds, Navigate refrigerator, \
+        openObject refrigerator, putObjectInto extracellular matrix (ECM; Matrigel or Cultrex) compounds cooling rack, 
+        waitForCondition extracellular matrix (ECM; Matrigel or Cultrex) compounds 4 degree\
+        ```\
+        
+    Task description: Pre-warm a 24-well plate in a 37°C CO2 incubator. \
+    Next plan:
+    """
+
+'''
+High level Plan: Navigate CO2 incubator, openObject CO2 incubator, grabObject 24-well plate, putObjectInto 24-well plate CO2 incubator, waitForCondition 24-well plate 37 degree
+'''
+
+response = get_completion(prompt) 
+
 print(response)
