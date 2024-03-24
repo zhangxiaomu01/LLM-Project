@@ -23,97 +23,6 @@ def get_completion(prompt, model="gpt-3.5-turbo"):
     )
     return response.choices[0].message.content
 
-
-text = f"""
-You should express what you want a model to do by \ 
-providing instructions that are as clear and \ 
-specific as you can possibly make them. \ 
-This will guide the model towards the desired output, \ 
-and reduce the chances of receiving irrelevant \ 
-or incorrect responses. Don't confuse writing a \ 
-clear prompt with writing a short prompt. \ 
-In many cases, longer prompts provide more clarity \ 
-and context for the model, which can lead to \ 
-more detailed and relevant outputs.
-"""
-prompt = f"""
-Summarize the text delimited by triple backticks \ 
-into a single sentence.
-```{text}```
-"""
-
-prompt = f"""Create a high-level plan for completing a household task \
-      using the allowed actions and visible objects. You can find an example \
-      delimited by triple backticks. \
-    Allowed actions: OpenObject, CloseObject, PickupObject, PutObject, ToggleObjectOn,
-    ToggleObjectOff, SliceObject, Navigation \
-    
-    ```Example:
-        Task description: Put a heated egg in the sink.
-        Completed plan: Navigation fridge, OpenObject fridge, \
-        PickupObject egg, CloseObject fridge\
-        Visible objects are sink, egg, microwave\
-        High level Plan: Navigation microwave, OpenObject microwave, PutObject egg microwave,\
-        CloseObject microwave, ToggleObjectOn microwave, ToggleObjectOff microwave,\
-        OpenObject microwave, PickupObject egg, CloseObject microwave, Navigation\
-        sinkbasin, PutObject egg sinkbasin```\
-        
-    Task description: Cook a potato and put it into the recycle bin. \
-    Completed plan: Navigation fridge, OpenObject fridge, PickupObject potato, \
-    CloseObject fridge, Navigation microwave, OpenObject microwave, PutObject potato \
-    microwave, CloseObject microwave, ToggleObjectOn microwave, ToggleObjectOff \
-    microwave, OpenObject microwave, PickupObject potato, CloseObject microwave \
-    Visible objects are microwave, fridge, potato, garbagecan \
-    Next plan:
-    """
-
-prompt = f"""Create a high-level plan for completing a lab task \
-      using the allowed actions and usable objects. You can find an example \
-      delimited by triple backticks. Please format the result the same as the example.\
-    Allowed actions: OpenObject, CloseObject, PickupObject, PickupObjectWith, PutObject, ToggleObjectOn,
-    ToggleObjectOff, SliceObject, Navigation \
-    
-    ```Example:
-        Task description: Put the tweezers into the container, then grab the sample with the tweezers.\
-        Usable objects are tweezers, container, sample\
-        High level Plan: Navigation tweezers, PickupObject tweezers, Navigation container,
-        PickupObjectWith tweezers sample```\
-        
-    Task description: Take a potato and put it into the recycle bin. \
-    Usable objects are potato, recycle bin
-    Next plan:
-    """
-'''
-High level Plan: 
-   Navigation potato, PickupObject potato, Navigation recycle bin, PutObject potato
-
-High level Plan: 
-Navigation potato, PickupObject potato, Navigation recycle bin, PutObject potato into recycle bin
-'''
-
-prompt = f"""Create a high-level plan for completing a lab task \
-      using the allowed actions and usable objects. You can find examples \
-      delimited by triple backticks. Please format the result the same as the example.\
-    Allowed actions: Navigate, openObject, grabObject, putObject, disinfect, centrifuge, putObjectInto, \
-        pickupObjectWith, extractObject, transferObejct, changeObject, mixObject, waitForCondition \
-    
-    ```Example1:
-        Task description: Put the tweezers into the container, then grab the sample with the tweezers.\
-        High level Plan: Navigate tweezers, grabObject tweezers, Navigate container, openObject container, \
-        pickupObjectWith tweezers sample.\
-        
-        Example2: \
-        Task description: Pre-warm sample in the 37 degree water bath.\
-        High level Plan: Navigate water bath, putObjectInto sample water bath, waitForCondition sample 37 degree\
-        ```\
-        
-    Task description: Take a potato from refrigerator and thaw it into water bath for 26 degree. \
-    Next plan:
-    """
-'''
-Navigate refrigerator, openObject refrigerator, grabObject potato, navigate water bath, putObjectInto potato water bath, waitForCondition potato 26 degree
-'''
-
 prompt = f"""Create a high-level plan for completing a lab task \
       using the allowed actions and usable objects. You can find examples \
       delimited by triple backticks. Please format the result the same as the example.\
@@ -140,10 +49,5 @@ prompt = f"""Create a high-level plan for completing a lab task \
     Next plan:
     """
 
-'''
-High level Plan: Navigate CO2 incubator, openObject CO2 incubator, grabObject 24-well plate, putObjectInto 24-well plate CO2 incubator, waitForCondition 24-well plate 37 degree
-'''
-
 response = get_completion(prompt) 
-
 print(response)
