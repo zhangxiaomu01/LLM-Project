@@ -55,34 +55,34 @@ prompt = """Create a high-level plan for completing a lab task \
         Task description: Put the tissue culture plates onto the bench, then grab the Extracellular matrix compounds with the tweezers.\
         High level Plan: \
         [\
-            {action : "Navigate", objectList : ["de_01"]},\
-            {action : "grabObject", objectList : ["de_01"]},\
-            {action : "Navigate", objectList : ["de_04"]},\
-            {action : "openObject", objectList : ["de_04"]},\
-            {action : "pickupObjectWith", objectList : ["de_14", "sa_01"]},\
+            {"action" : "Navigate", "objectList" : ["de_01"]},\
+            {"action" : "grabObject", "objectList" : ["de_01"]},\
+            {"action" : "Navigate", "objectList" : ["de_04"]},\
+            {"action" : "openObject", "objectList" : ["de_04"]},\
+            {"action" : "pickupObjectWith", "objectList" : ["de_14", "sa_01"]},\
         ]\
         
         Example2: \
         Task description: Pre-warm ECM in the 37 degree water bath.\
         High level Plan: \
         [\
-            {action : "Navigate", objectList : ["sa_01"]},\
-            {action : "grabObject", objectList : ["sa_01"]},\
-            {action : "Navigate", objectList : ["de_13"]},\
-            {action : "putObjectInto", objectList : ["sa_01", "de_13"]},\
-            {action : "waitForCondition", objectList : ["sa_01"], conditionList : ["37 degree"]},\
+            {"action" : "Navigate", "objectList" : ["sa_01"]},\
+            {"action" : "grabObject", "objectList" : ["sa_01"]},\
+            {"action" : "Navigate", "objectList" : ["de_13"]},\
+            {"action" : "putObjectInto", "objectList" : ["sa_01", "de_13"]},\
+            {"action" : "waitForCondition", "objectList" : ["sa_01"], "conditionList" : ["37 degree"]},\
         ]\
         
         Example3: \
         Task description: Thaw extracellular matrix (ECM; Matrigel or Cultrex) compounds in a 4°C cooling bench in the refrigerator.\
         High level Plan: \
         [\
-            {action : "Navigate", objectList : ["sa_01"]},\
-            {action : "grabObject", objectList : ["sa_01"]},\
-            {action : "Navigate", objectList : ["de_08"]},\
-            {action : "openObject", objectList : ["de_08"]},\
-            {action : "putObjectInto", objectList : ["sa_01", "de_08"]},\
-            {action : "waitForCondition", objectList : ["sa_01"], conditionList : ["4 degree"]},\
+            {"action" : "Navigate", "objectList" : ["sa_01"]},\
+            {"action" : "grabObject", "objectList" : ["sa_01"]},\
+            {"action" : "Navigate", "objectList" : ["de_08"]},\
+            {"action" : "openObject", "objectList" : ["de_08"]},\
+            {"action" : "putObjectInto", "objectList" : ["sa_01", "de_08"]},\
+            {"action" : "waitForCondition", "objectList" : ["sa_01"], "conditionList" : ["4 degree"]},\
         ]\
         ```\
     Task description: Pre-warm a 12-well plate in a 37°C CO2 incubator. \
@@ -91,12 +91,12 @@ prompt = """Create a high-level plan for completing a lab task \
 
 '''
 [
-    {action : "Navigate", objectList : ["de_01"]},
-    {action : "grabObject", objectList : ["de_01"]},
-    {action : "Navigate", objectList : ["de_05"]},
-    {action : "openObject", objectList : ["de_05"]},
-    {action : "putObjectInto", objectList : ["de_01", "de_05"]},
-    {action : "waitForCondition", objectList : ["de_01"], conditionList : ["37 degree"]},
+    {"action" : "Navigate", "objectList" : ["de_01"]},
+    {"action" : "grabObject", "objectList" : ["de_01"]},
+    {"action" : "Navigate", "objectList" : ["de_05"]},
+    {"action" : "openObject", "objectList" : ["de_05"]},
+    {"action" : "putObjectInto", "objectList" : ["de_01", "de_05"]},
+    {"action" : "waitForCondition", "objectList" : ["de_01"], "conditionList" : ["37 degree"]},
 ]
 '''
 
