@@ -99,6 +99,25 @@ prompt = """Create a high-level plan for completing a lab task \
     {"action" : "waitForCondition", "objectList" : ["de_01"], "conditionList" : ["37 degree"]},
 ]
 '''
+'''
+ChatCompletion(id='chatcmpl-9KLDJEF9Bus4cwjCVNcyOZGPONYf6', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='[\n    {"action" : "Navigate", "objectList" : ["de_01"]},\n    {"action" : "grabObject", "objectList" : ["de_01"]},\n    {"action" : "Navigate", "objectList" : ["de_05"]},\n    {"action" : "openObject", "objectList" : ["de_05"]},\n    {"action" : "putObjectInto", "objectList" : ["de_01", "de_05"]},\n    {"action" : "waitForCondition", "objectList" : ["de_01"], "conditionList" : ["37 degree"]},\n]', role='assistant', function_call=None, tool_calls=None))], created=1714635133, model='gpt-3.5-turbo-0125', object='chat.completion', system_fingerprint='', usage=CompletionUsage(completion_tokens=142, prompt_tokens=858, total_tokens=1000))
+
+'''
+
+'''
+UE LOG for testing:
+{"id":"chatcmpl-9L2m6xOXkj7u64lqAON5XKvB3AyjR","object":"chat.completion","created":1714802582,"model":"gpt-3.5-turbo-0125","choices":[{"index":0,"message":{"role":"assistant","content":"```json\n[\n    {\"action\" : \"Navigate\", \"objectList\" : [\"de_01\"]},\n    {\"action\" : \"grabObject\", \"objectList\" : [\"de_01\"]},\n    {\"action\" : \"Navigate\", \"objectList\" : [\"de_05\"]},\n    {\"action\" : \"openObject\", \"objectList\" : [\"de_05\"]},\n    {\"action\" : \"putObjectInto\", \"objectList\" : [\"de_01\", \"de_05\"]},\n    {\"action\" : \"waitForCondition\", \"objectList\" : [\"d
+e_01\"], \"conditionList\" : [\"37 degree\"]},\n]\n```"},"finish_reason":"stop"}],"usage":{"prompt_tokens":902,"completion_tokens":146,"total_tokens":1048},"system_fingerprint":""} 
+
+[
+    {"action" : "Navigate", "objectList" : ["de_01"]},
+    {"action" : "grabObject", "objectList" : ["de_01"]},
+    {"action" : "Navigate", "objectList" : ["de_05"]},
+    {"action" : "openObject", "objectList" : ["de_05"]},
+    {"action" : "putObjectInto", "objectList" : ["de_01", "de_05"]},
+    {"action" : "waitForCondition", "objectList" : ["de_01"], "conditionList" : ["37 degree"]},
+]
+'''
 
 response = get_completion(prompt) 
 print(response)
